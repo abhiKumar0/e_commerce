@@ -1,8 +1,11 @@
-import { createTheme } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
+import { createTheme } from '@mui/material';
 
 const drawerWidth = 0;
 
-export default createTheme((theme) => ({
+const theme = createTheme();
+
+export default makeStyles(() => ({
   appBar: {
     boxShadow: 'none',
     borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
@@ -32,9 +35,9 @@ export default createTheme((theme) => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    backgroundColor: theme.palette.common.white,
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: theme.palette.common.white,
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,

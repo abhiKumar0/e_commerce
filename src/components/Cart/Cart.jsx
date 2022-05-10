@@ -1,14 +1,17 @@
 import React from 'react';
 import { Container, Typography, Button, Grid } from '@mui/material';
-
+import { Link } from 'react-router-dom'
 import useStyles from './styles';
+import CartItem from './CartItem/CartItem';
 
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart }) => {
     const classes = useStyles();
 
     const EmptyCart = () => (
-        <Typography variant="subtitle1">You have no item in your shopping cart, start adding some!</Typography>
+        <Typography variant="subtitle1">You have no item in your shopping cart,
+        <Link to='/'> start adding some</Link>!
+        </Typography>
     );
 
     const FilledCart = () => (
@@ -16,15 +19,15 @@ const Cart = ({ cart }) => {
             <Grid container spacing={3}>
                 { cart.line_items.map((item) => (
                     <Grid item xs={12} sm={4} key={item.id}>
-                        <div>{item.name}</div>
+                        <CartItem item={item} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart} />
                     </Grid>
                 ))}
             </Grid>
             <div className={classes.cardDetails}>
                     <Typography variant="h4">Subtotal: {cart.subtotal.formatted_with_symbol}</Typography>
                     <div>
-                        <Button className={classes.emptyButton} type="button" variant="contained" size="large" color="secondary">Empty cart</Button>
-                        <Button className={classes.checkout} type="button" variant="contained" size="large" color="primary">Checkout</Button>
+                        <Button className={classes.emptyButton} type="button" variant="contained" size="large" color="secondary" onClick={handleEmptyCart}>Empty cart</Button>
+                        <Button component={Link} to='/checkout' className={classes.checkout} type="button" variant="contained" size="large" color="primary">Checkout</Button>
                     </div>
             </div>
         </>
