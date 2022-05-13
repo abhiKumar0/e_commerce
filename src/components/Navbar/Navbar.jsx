@@ -16,7 +16,7 @@ function Navbar({ totalItems }){
             <AppBar theme={classes.appBar} position='fixed' style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '12px 16px' }}  color="inherit">
                 <Typography component={Link} to="/" variant='h6' className={classes.title} styles={{flexGrow: 1, alignItems: 'center', display: 'flex', textDecoration: 'none',}} color="inherit">
                     {/* <img src='' alt="logo.png"  height="25px" /> */}
-                    PPL Commerce
+                    AE Commerce 
                 </Typography>
                 <div className={classes.grow} />
                 {location.pathname === '/' && (

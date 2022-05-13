@@ -7,7 +7,7 @@ export default makeStyles(() => ({
   },
   emptyButton: {
     minWidth: '150px',
-    margin: "0 20px 0 0"
+    margin: "0 20px 10px 0"
     
   },
   checkoutButton: {
