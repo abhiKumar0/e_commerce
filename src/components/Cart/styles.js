@@ -1,17 +1,26 @@
 import { makeStyles } from '@mui/styles';
+import { createTheme } from '@mui/material';
+
+const theme = createTheme();
 
 export default makeStyles(() => ({
+  toolbar: theme.mixins.toolbar,
   title: {
     marginTop: '5%',
-    marginBottom: '20px',
   },
   emptyButton: {
     minWidth: '150px',
-    margin: "0 20px 10px 0"
-    
+    marginBottom: '10px',
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: '5px',
+    },
+    [theme.breakpoints.up('xs')]: {
+      marginRight: '20px',
+    },
   },
   checkoutButton: {
     minWidth: '150px',
+    marginBottom: '10px',
   },
   link: {
     textDecoration: 'none',

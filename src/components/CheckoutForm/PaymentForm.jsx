@@ -5,9 +5,9 @@ import { loadStripe } from '@stripe/stripe-js';
 
 import Review from './Review'
 
-const stripePromise = loadStripe('pk_test_51Kyb7GSEI0skW8lDgdu5SvV2AAxANjW442OxszhBJp5CJSpObcv3yaAWDtO7UhVbiJQX9OWQiL9GWp746TtP7Qnn00fEX0oQMe')
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
 
-const PaymentForm = ({ checkoutToken, backStep,onCaptureCheckout, nextStep }) => {
+const PaymentForm = ({ checkoutToken, backStep,onCaptureCheckout, nextStep, timeout }) => {
 
   const handleSubmit = async (event, element, stripe) => {
     event.preventDefault();
@@ -38,8 +38,9 @@ const PaymentForm = ({ checkoutToken, backStep,onCaptureCheckout, nextStep }) =>
              payment_method_id: paymentMethod.id
            }
         }
-        onCaptureCheckout(checkoutToken.id, orderData )
-        nextStep()
+        onCaptureCheckout(checkoutToken.id, orderData );
+        timeout();
+        nextStep();
     }
 
 
