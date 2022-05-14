@@ -1,3 +1,3 @@
 # e_commerce
 
-SITE aecomm.netlify.app
+SITE:  aecomm.netlify.app
